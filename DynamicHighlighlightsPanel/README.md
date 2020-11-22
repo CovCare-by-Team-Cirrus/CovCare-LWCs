@@ -1,3 +1,5 @@
+### DynamicHighlighlightsPanel displays brief details of a patient in a colored frame based upon the current health status of the patient.
+
 # Salesforce App
 
 This guide helps Salesforce developers who are new to Visual Studio Code go from zero to a deployed app using Salesforce Extensions for VS Code and Salesforce CLI.
