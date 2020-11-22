@@ -1,1 +1,3 @@
 # CovCare-LWCs
+
+This repository contains all the Lightning Web Components for the Salesforce Project of COVID19 Patient Management System, CovCare. This is being developed by Team Cirrus...
