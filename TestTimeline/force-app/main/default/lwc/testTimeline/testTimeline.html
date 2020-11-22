@@ -1,0 +1,121 @@
+<template>
+    <template if:true={isTest}>
+        <div class="slds-scrollable" style="height:25rem;">
+            <lightning-card title="Patient Covid Test Timeline">
+                <ul class="slds-timeline">
+                    <template for:each={tests} for:item="test">
+                        <template if:false={test.Result__c}>
+                            <li key={test.Date_and_Time_of_Test__c}>
+                                <div class="slds-timeline__item_expandable slds-timeline__item_task">
+                                    <div class="slds-media">
+                                        <div class="slds-media__figure">
+                                            <button class="slds-button slds-button_icon"
+                                                title="Toggle details for Review proposals for EBC deck with larger team and have marketing review this"
+                                                aria-controls="task-item-base">
+                                                <svg class="slds-button__icon slds-timeline__details-action-icon"
+                                                    aria-hidden="true">
+                                                    <use
+                                                        xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#switch">
+                                                    </use>
+                                                </svg>
+                                            </button>
+                                            <div class="slds-icon_container slds-icon-standard-task slds-timeline__icon"
+                                                title="task">
+                                                <svg class="slds-icon slds-icon_small" aria-hidden="true">
+                                                    <use
+                                                        xlink:href="/assets/icons/standard-sprite/svg/symbols.svg#task">
+                                                    </use>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                        <div class="slds-media__body">
+                                            <div class="slds-grid slds-grid_align-spread slds-timeline__trigger">
+                                                <div
+                                                    class="slds-grid slds-grid_vertical-align-center slds-truncate_container_75 slds-no-space">
+                                                    <h3 class="slds-truncate" style="color: rgb(5, 87, 16);">
+
+                                                        <strong>{test.Test_Result__c}</strong>
+
+                                                    </h3>
+                                                </div>
+                                                <div class="slds-timeline__actions slds-timeline__actions_inline">
+                                                    <p class="slds-timeline__date">
+                                                        <lightning-formatted-date-time
+                                                            value={test.Date_and_Time_of_Test__c} year="numeric"
+                                                            day="2-digit" month="short" hour="2-digit" minute="2-digit">
+                                                        </lightning-formatted-date-time>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <p class="slds-m-horizontal_xx-small">
+                                                <b>Method: </b>{test.Method_of_Testing__c}<br />
+                                                <b>Lab: </b>{test.Laboratory_Name__r.Name}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </template>
+                        <template if:true={test.Result__c}>
+                            <li key={test.Date_and_Time_of_Test__c}>
+                                <div class="slds-timeline__item_expandable slds-timeline__item_event">
+                                    <div class="slds-media">
+                                        <div class="slds-media__figure">
+                                            <button class="slds-button slds-button_icon"
+                                                title="Toggle details for EBC Follow up call"
+                                                aria-controls="event-item-base">
+                                                <svg class="slds-button__icon slds-timeline__details-action-icon"
+                                                    aria-hidden="true">
+                                                    <use
+                                                        xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#switch">
+                                                    </use>
+                                                </svg>
+                                            </button>
+                                            <div class="slds-icon_container slds-icon-standard-event slds-timeline__icon"
+                                                title="event">
+                                                <svg class="slds-icon slds-icon_small" aria-hidden="true">
+                                                    <use
+                                                        xlink:href="/assets/icons/standard-sprite/svg/symbols.svg#event">
+                                                    </use>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                        <div class="slds-media__body">
+                                            <div class="slds-grid slds-grid_align-spread slds-timeline__trigger">
+                                                <div
+                                                    class="slds-grid slds-grid_vertical-align-center slds-truncate_container_75 slds-no-space">
+                                                    <h3 class="slds-truncate" style="color: rgb(204, 75, 75);">
+                                                        <strong>{test.Test_Result__c}</strong>
+                                                    </h3>
+                                                </div>
+                                                <div class="slds-timeline__actions slds-timeline__actions_inline">
+                                                    <p class="slds-timeline__date">
+                                                        <lightning-formatted-date-time
+                                                            value={test.Date_and_Time_of_Test__c} year="numeric"
+                                                            day="2-digit" month="short" hour="2-digit" minute="2-digit">
+                                                        </lightning-formatted-date-time>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <p class="slds-m-horizontal_xx-small">
+                                                <b>Method: </b>{test.Method_of_Testing__c}<br />
+                                                <b>Lab: </b>{test.Laboratory_Name__r.Name}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </template>
+                    </template>
+                </ul>
+            </lightning-card>
+        </div>
+    </template>
+    <template if:false={isTest}>
+        <lightning-card title="Patient Covid Test Timeline">
+            <p style="text-align: center;">
+                No Covid19 Tests have been done yet on this patient.
+            </p>
+        </lightning-card>
+    </template>
+</template>
