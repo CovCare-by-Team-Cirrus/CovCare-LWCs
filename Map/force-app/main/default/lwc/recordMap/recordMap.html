@@ -1,0 +1,14 @@
+<template>
+    <lightning-card title="Locate on Map">
+        <template if:true={record}>
+            <div class="slds-m-around_medium">
+                <h1 class="slds-text-heading_small">{name}</h1>
+                <p class="slds-text-body_regular">A single marker is displayed on the map which shows location of the specified Hospital.</p>
+            </div>
+            <lightning-map
+                map-markers={mapMarkers}
+                zoom-level={zoomLevel}
+            ></lightning-map>
+        </template>
+    </lightning-card>
+</template>
