@@ -1,4 +1,4 @@
-# Carousel component for displaying slides of images required for branding, images are taken by the url field of the custom object.
+### Carousel component for displaying slides of images required for branding, images are taken by the url field of the custom object.
 
 
 # Salesforce App
