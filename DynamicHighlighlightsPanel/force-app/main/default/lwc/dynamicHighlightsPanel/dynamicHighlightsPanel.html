@@ -1,0 +1,134 @@
+<template>
+    <template if:true={record}>
+        <div class={theme}>
+            <div class="slds-page-header__row">
+                <div class="slds-page-header__col-title">
+                    <div class="slds-media">
+                        <div class="slds-media__figure">
+                            <!--span class="slds-icon_container slds-icon-standard-opportunity">
+                                <svg class="slds-icon slds-page-header__icon" aria-hidden="true">
+                                    <use xlink:href="/assets/icons/standard-sprite/svg/symbols.svg#opportunity"></use>
+                                </svg>
+                            </span-->
+                            <lightning-icon icon-name={icon} alternative-text="Approved" title="Approved"></lightning-icon>
+                        </div>
+                        <div class="slds-media__body">
+                            <div class="slds-page-header__name">
+                                <div class="slds-page-header__name-title">
+                                    <h1>
+                                        <span>{objectName}</span>
+                                        <span class="slds-page-header__title slds-truncate" title={item.name}>{item.name}</span>
+                                    </h1>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="slds-page-header__col-actions">
+                    <div class="slds-page-header__controls">
+                        <!--div class="slds-page-header__control">
+                            <button class="slds-button slds-button_neutral slds-button_stateful slds-not-selected"
+                                aria-live="assertive">
+                                <span class="slds-text-not-selected">
+                                    <svg class="slds-button__icon slds-button__icon_small slds-button__icon_left"
+                                        aria-hidden="true">
+                                        <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#add"></use>
+                                    </svg>Follow</span>
+                                <span class="slds-text-selected">
+                                    <svg class="slds-button__icon slds-button__icon_small slds-button__icon_left"
+                                        aria-hidden="true">
+                                        <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#check"></use>
+                                    </svg>Following</span>
+                                <span class="slds-text-selected-focus">
+                                    <svg class="slds-button__icon slds-button__icon_small slds-button__icon_left"
+                                        aria-hidden="true">
+                                        <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+                                    </svg>Unfollow</span>
+                            </button>
+                        </div-->
+                        <div class="slds-page-header__control">
+                            <ul class="slds-button-group-list">
+                                <li>
+                                    <button class="slds-button slds-button_neutral" onclick={editHandler}>Edit</button>
+                                </li>
+                                <li>
+                                    <button class="slds-button slds-button_neutral" onclick={newHandler}>New Patient</button>
+                                </li>
+                                <!--li>
+                                    <button class="slds-button slds-button_neutral">Clone</button>
+                                </li>
+                                <li>
+                                    <div class="slds-dropdown-trigger slds-dropdown-trigger_click">
+                                        <button class="slds-button slds-button_icon slds-button_icon-border-filled"
+                                            aria-haspopup="true" title="More Actions">
+                                            <svg class="slds-button__icon" aria-hidden="true">
+                                                <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#down"></use>
+                                            </svg>
+                                            <span class="slds-assistive-text">More Actions</span>
+                                        </button>
+                                    </div>
+                                </li-->
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="slds-page-header__row slds-page-header__row_gutters">
+                <div class="slds-page-header__col-details">
+                    <ul class="slds-page-header__detail-row">
+                        <li class="slds-page-header__detail-block" style="color: black;">
+                            <div class="slds-text-title slds-truncate" title="Patient ID">Patient ID</div>
+                            <div class="slds-truncate" title={item.id}>
+                                {item.id}</div>
+                        </li>
+                        <li class="slds-page-header__detail-block" style="color: black;">
+                            <div class="slds-text-title slds-truncate" title="Name">Name</div>
+                            <div class="slds-truncate" title={item.name}>{item.name}</div>
+                        </li>
+                        <li class="slds-page-header__detail-block" style="color:black;">
+                            <div class="slds-text-title slds-truncate" title="Contact no">Contact no</div>
+                            <div class="slds-truncate" title={item.phone}>{item.phone}</div>
+                            <!-- <div class="slds-truncate" title="Hyperlink">
+                                <a href="javascript:void(0);">Hyperlink</a>
+                            </div> -->
+                        </li>
+                        <li class="slds-page-header__detail-block" style="color: black;">
+                            <div class="slds-text-title slds-truncate" title="Gender">Gender</div>
+                            <div class="slds-truncate" title={item.gender}>{item.gender}</div>
+                        </li>
+                        <li class="slds-page-header__detail-block" style="color: black;">
+                            <div class="slds-text-title slds-truncate" title="Age">Age</div>
+                            <div class="slds-truncate" title={item.age}>{item.age}</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="slds-page-header__row slds-page-header__row_gutters">
+                <div class="slds-page-header__col-details">
+                    <ul class="slds-page-header__detail-row">
+                        <li class="slds-page-header__detail-block" style="color: black;">
+                            <div class="slds-text-title slds-truncate" title="Ward">Ward</div>
+                            <div class="slds-truncate" title={item.wardno}>
+                                {item.wardno}</div>
+                        </li>
+                        <li class="slds-page-header__detail-block" style="color: black;">
+                            <div class="slds-text-title slds-truncate" title="Bed No.">Bed No.</div>
+                            <div class="slds-truncate" title={item.bedno}>{item.bedno}</div>
+                        </li>
+                        <li class="slds-page-header__detail-block" style="color:black;">
+                            <div class="slds-text-title slds-truncate" title="Treated by Doctor">Treated by Doctor</div>
+                            <div class="slds-truncate" title={item.doctor}>{item.doctor}</div>
+                            <!-- <div class="slds-truncate" title="Hyperlink">
+                                <a href="javascript:void(0);">Hyperlink</a>
+                            </div> -->
+                        </li>
+                        <li class="slds-page-header__detail-block" style="color: black;">
+                            <div class="slds-text-title slds-truncate" title="Health Status">Health Status</div>
+                            <div class="slds-truncate" title={item.status}>{item.status}</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </template>
+</template>
